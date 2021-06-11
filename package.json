@@ -1,0 +1,11 @@
+{
+  "name": "ytl",
+  "version": "1.0.0",
+  "description": "A Node.js YouTube utility library",
+  "main": "src/index.mjs",
+  "scripts": {
+    "test": "node tests/index.mjs"
+  },
+  "author": "Thatguyjs",
+  "license": "MIT"
+}

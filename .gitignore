@@ -1,0 +1,6 @@
+# Allow these later
+/examples
+/tests
+
+# The cipher cache shouldn't be included
+/src/cipher/cache/*
