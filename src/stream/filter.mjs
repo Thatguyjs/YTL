@@ -4,7 +4,7 @@ import StreamInfo from "./info.mjs";
 
 
 class StreamFilter {
-	
+
 	// Stream types
 	static AUDIO = StreamInfo.AUDIO;
 	static VIDEO = StreamInfo.VIDEO;
@@ -30,7 +30,7 @@ class StreamFilter {
 
 
 	// Helper methods
-	
+
 	#filter_type(type, stream) {
 		if((type & StreamFilter.VIDEO) !== 0 && stream.has_type(StreamFilter.VIDEO))
 			return true;
@@ -84,7 +84,7 @@ class StreamFilter {
 
 
 	// Filter out streams
-	apply(type, options={}) {
+	apply(types, options={}) {
 		let streams = this.#streams.normal;
 		if(options.include_adaptive) streams = streams.concat(this.#streams.adaptive);
 
@@ -100,7 +100,7 @@ class StreamFilter {
 					best.audio = streams[s];
 				}
 			}
-			else if(this.#filter_options(type, options, streams[s])) {
+			else if(this.#filter_options(types, options, streams[s])) {
 				result.push(streams[s]);
 			}
 		}

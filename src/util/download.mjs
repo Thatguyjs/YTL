@@ -18,7 +18,7 @@ async function request_to_file(url, dest_path) {
 	return new Promise((resolve, reject) => {
 		https.get(url, (res) => {
 			res.pipe(write_stream);
-			
+
 			res.on('error', (err) => {
 				write_stream.end();
 				reject(err);
@@ -42,7 +42,7 @@ export default {
 		const best_audio = filter.apply(StreamFilter.ANY, { best: StreamFilter.AUDIO, include_adaptive: true })[0];
 
 		if(!best_audio) return null;
-		return this.download_stream(best_audio);
+		return this.download_stream(best_audio, dest);
 	},
 
 
@@ -53,7 +53,7 @@ export default {
 		const best_video = filter.apply(StreamFilter.ANY, { best: StreamFilter.VIDEO, include_adaptive: true })[0];
 
 		if(!best_video) return null;
-		return this.download_stream(best_video);
+		return this.download_stream(best_video, dest);
 	},
 
 

@@ -41,7 +41,7 @@ class StreamLoader {
 
 		if(typeof stream !== 'object') throw new TypeError("Invalid stream: " + (typeof stream));
 
-		this.#queue.push(stream);
+		return this.#queue.push(stream) - 1;
 	}
 
 
@@ -68,7 +68,7 @@ class StreamLoader {
 
 
 	// Load all streams in the queue
-	load_all(streams) {
+	load_all() {
 		let result = [];
 		let next = this.load_next();
 

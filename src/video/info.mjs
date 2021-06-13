@@ -22,7 +22,7 @@ class VideoInfo {
 	published = "";
 	uploaded = "";
 
-	
+
 	// Channel info
 	channel = {
 		id: "",
@@ -47,31 +47,31 @@ class VideoInfo {
 
 
 	// Create a VideoInfo instance from a YouTube video info object
-	constructor(vidObject, cipher) {
+	constructor(vid_object, cipher) {
 		this.cipher = cipher;
 
-		this.id = vidObject.videoDetails.videoId;
-		this.title = vidObject.videoDetails.title;
-		this.length = Duration.seconds(+vidObject.videoDetails.lengthSeconds);
-		this.keywords = vidObject.videoDetails.keywords;
-		this.description = vidObject.videoDetails.shortDescription;
-		this.views = +vidObject.videoDetails.viewCount;
-		this.thumbnails = vidObject.videoDetails.thumbnail.thumbnails;
-		this.category = vidObject.microformat.playerMicroformatRenderer.category;
+		this.id = vid_object.videoDetails.videoId;
+		this.title = vid_object.videoDetails.title;
+		this.length = Duration.seconds(+vid_object.videoDetails.lengthSeconds);
+		this.keywords = vid_object.videoDetails.keywords;
+		this.description = vid_object.videoDetails.shortDescription;
+		this.views = +vid_object.videoDetails.viewCount;
+		this.thumbnails = vid_object.videoDetails.thumbnail.thumbnails;
+		this.category = vid_object.microformat.playerMicroformatRenderer.category;
 
-		this.published = vidObject.microformat.playerMicroformatRenderer.publishDate;
-		this.uploaded = vidObject.microformat.playerMicroformatRenderer.uploadDate;
+		this.published = vid_object.microformat.playerMicroformatRenderer.publishDate;
+		this.uploaded = vid_object.microformat.playerMicroformatRenderer.uploadDate;
 
-		this.channel.id = vidObject.videoDetails.channelId;
-		this.channel.name = vidObject.microformat.playerMicroformatRenderer.ownerChannelName;
+		this.channel.id = vid_object.videoDetails.channelId;
+		this.channel.name = vid_object.microformat.playerMicroformatRenderer.ownerChannelName;
 
-		this.streams.expires = Duration.seconds(+vidObject.streamingData.expiresInSeconds);
-		this.streams.formats = StreamLoader.load_all(vidObject.streamingData.formats, { cipher: this.cipher });
-		this.streams.adaptive_formats = StreamLoader.load_all(vidObject.streamingData.adaptiveFormats, { cipher: this.cipher, adaptive: true });
+		this.streams.expires = Duration.seconds(+vid_object.streamingData.expiresInSeconds);
+		this.streams.formats = StreamLoader.load_all(vid_object.streamingData.formats, { cipher: this.cipher });
+		this.streams.adaptive_formats = StreamLoader.load_all(vid_object.streamingData.adaptiveFormats, { cipher: this.cipher, adaptive: true });
 
-		this.captions.tracks = vidObject.captions?.playerCaptionsTracklistRenderer.captionTracks;
-		this.captions.audio_tracks = vidObject.captions?.playerCaptionsTracklistRenderer.audioTracks;
-		this.captions.languages = vidObject.captions?.playerCaptionsTracklistRenderer.translationLanguages;
+		this.captions.tracks = vid_object.captions?.playerCaptionsTracklistRenderer.captionTracks;
+		this.captions.audio_tracks = vid_object.captions?.playerCaptionsTracklistRenderer.audioTracks;
+		this.captions.languages = vid_object.captions?.playerCaptionsTracklistRenderer.translationLanguages;
 	}
 
 }

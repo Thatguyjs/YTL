@@ -4,8 +4,8 @@ import PlaylistInfo from "./info.mjs";
 import PlaylistUtil from "./util.mjs";
 import request from "../util/request.mjs";
 
-import EventEmitter from "events";
-import https from "https";
+// import EventEmitter from "events";
+// import https from "https";
 
 
 class PlaylistLoader {
@@ -48,7 +48,7 @@ class PlaylistLoader {
 	async #load(item) {
 		const pl_page = await request.get_playlist_page(item);
 		let request_info = PlaylistUtil.get_request_info(pl_page.body);
-		
+
 		// Load the videos that YouTube initially includes on the playlist page
 		let videos = PlaylistUtil.extract_videos(pl_page.body);
 
@@ -71,6 +71,12 @@ class PlaylistLoader {
 		if(this.#queue.length === 0) return null;
 
 		return this.#load(this.#queue.shift());
+	}
+
+
+	// Get the length of the queue
+	get length() {
+		return this.#queue.length;
 	}
 
 }

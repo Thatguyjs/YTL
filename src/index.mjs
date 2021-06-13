@@ -2,7 +2,7 @@ import { Cipher, CipherLoader } from "./cipher/export.mjs";
 import { StreamInfo, StreamFilter, itags, StreamLoader } from "./stream/export.mjs";
 
 import { VideoInfo, VideoLoader } from "./video/export.mjs";
-import  { PlaylistInfo, PlaylistLoader } from "./playlist/export.mjs";
+import { PlaylistInfo, PlaylistLoader } from "./playlist/export.mjs";
 
 import Duration from "./util/duration.mjs";
 import request from "./util/request.mjs";

@@ -80,4 +80,3 @@ class StreamInfo {
 
 
 export default StreamInfo;
-

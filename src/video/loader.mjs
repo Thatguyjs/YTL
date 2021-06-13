@@ -130,7 +130,7 @@ class VideoLoader {
 		return this.#queue.length;
 	}
 
-	
+
 	// Tie to the EventEmitter
 	on(...args) { return this.#emitter.on(...args); }
 	once(...args) { return this.#emitter.once(...args); }
