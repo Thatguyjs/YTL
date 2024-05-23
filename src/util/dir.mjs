@@ -6,5 +6,8 @@ export default function(path) {
 	let result = path.slice(0, path.lastIndexOf('/'));
 	if(result.startsWith('file:///')) result = result.slice(8);
 
+	if(process.platform.toLowerCase() !== 'win32')
+		result = '/' + result;
+
 	return result;
 }
