@@ -6,6 +6,7 @@ import get_dir from "../util/dir.mjs";
 
 import { constants as fs_constants } from "fs";
 import pfs from "fs/promises";
+import { fileURLToPath } from "url";
 
 
 class CipherLoader {
@@ -66,7 +67,9 @@ class CipherLoader {
 		let source = `const ${obj_name} = {\n${obj_source}\n};\n\n`;
 		source += `export default function(a) {\n${func_source}\n}`;
 
-		return pfs.writeFile(`./src/cipher/cache/${this.#player_name}.mjs`, source);
+		let here = fileURLToPath(import.meta.url);
+		here = here.slice(0, here.lastIndexOf('/'));
+		return pfs.writeFile(`${here}/cache/${this.#player_name}.mjs`, source);
 	}
 
 

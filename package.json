@@ -1,6 +1,6 @@
 {
   "name": "ytl",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Node.js YouTube utility library",
   "main": "src/index.mjs",
   "scripts": {
